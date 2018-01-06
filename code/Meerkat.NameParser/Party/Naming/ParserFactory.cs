@@ -1,6 +1,5 @@
 ﻿using System;
-
-using System.Collections.Generic;
+using System.Collections.Concurrent;
 using System.IO;
 using System.Reflection;
 
@@ -10,11 +9,11 @@ namespace Meerkat.Party.Naming
 {
     public static class ParserFactory
     {
-        private static readonly IDictionary<string, SymbolTable> tables;
+        private static readonly ConcurrentDictionary<string, SymbolTable> tables;
 
         static ParserFactory()
         {
-            tables = new Dictionary<string, SymbolTable>();
+            tables = new ConcurrentDictionary<string, SymbolTable>();
         }
 
         public static PersonNameParser StandardPersonParser(bool reverse = false)
@@ -28,11 +27,17 @@ namespace Meerkat.Party.Naming
             return parser;
         }
 
+        /// <summary>
+        /// Gets a <see cref="ISymbolTable"/> produced from an embedded resource.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="cache"></param>
+        /// <returns></returns>
         public static ISymbolTable StandardSymbolTable(string name, bool cache = true)
         {
             var resourcePath = "Meerkat.Party.Naming." + name + ".json";
 
-            Func<string, SymbolTable> f = (x) =>
+            Func<string, SymbolTable> f = x =>
             {
                 using (var reader = new StreamReader(GetEmbeddedResourceStream(x)))
                 {
@@ -44,9 +49,15 @@ namespace Meerkat.Party.Naming
             return SymbolTable(resourcePath, cache, f);
         }
 
+        /// <summary>
+        /// Gets a <see cref="ISymbolTable"/> produced from a file
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <param name="cache"></param>
+        /// <returns></returns>
         public static ISymbolTable FileSymbolTable(string fileName, bool cache = true)
         {
-            Func<string, SymbolTable> f = (x) =>
+            Func<string, SymbolTable> f = x =>
             {
                 var data = File.ReadAllText(x);
 

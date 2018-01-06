@@ -13,6 +13,7 @@
         <releaseNotes>@releaseNotes@</releaseNotes>
         <tags>human name parser person</tags>
         <dependencies>
+            <dependency id="Meerkat.Logging" version="1.0.2" />
             <dependency id="Newtonsoft.Json" version="10.0.2" />
         </dependencies>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>

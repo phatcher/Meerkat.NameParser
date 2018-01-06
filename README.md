@@ -26,7 +26,7 @@ The library is available under the [MIT License](http://en.wikipedia.org/wiki/MI
 ## Getting Started
 
 ## Name Structure
-The library defines an interface which exposes standardized parts of a name, all of which are optional to allow for flexible handling and also poor data quality:
+The library is flexible and defines an interface which exposes standardized parts of a name, all of which are optional to allow for flexible handling and also poor data quality:
 
 * T)itle - Typically "Mr", "Mrs", "Ms" but we can also recognise professional ("Dr", "Prof" etc) and military ("Captain", "Major", "Lt" etc) titles
 * G)iven name(s) - The personal names e.g. "Bob", "Jean-Paul"
@@ -38,7 +38,7 @@ The library defines an interface which exposes standardized parts of a name, all
 We use given and family name in the library rather than forename/surname to avoid confusion with non-Western names where the display order is "Family Given" rather than "Given Family"
 
 We also have two other properties
-* Salutation - For the most part this is simple e.g. "Dear Given" or "Dear Title Surname" depending on how formal you want to be, however in British English you have anomalies such as "Sir George Bingham" is "Dear Sir George" and the "Bishop Of Cantebury" is "My Lord Bishop"
+* Salutation - For the most part this is simple e.g. "Dear {Given}" or "Dear {Title} {Prefix} {Family} {Suffix}" depending on how formal you want to be, however in British English you have anomalies such as "Sir George Bingham" is "Dear Sir George" and the "Bishop Of Cantebury" is "My Lord Bishop"
 * Envelope - The name you would put on the envelope e.g. "Mr Bob Smith"
 
 These are controlled by SalutationFormat and EnvelopeFormat so that they may be generated from the name parts or set explicitly.
@@ -106,6 +106,4 @@ This is only limited by what you can infer from the data and what you need for y
     { "NameType": "Academic", "Value": "BEd", "Properties":{ "Degree": "Bachelors", "Subject": "Education" } },
     { "NameType": "Academic", "Value": "BEng", "Properties":{ "Degree": "Bachelors", "Subject": "Engineering" } },
     { "NameType": "Academic", "Value": "BPharm", "Properties":{ "Degree": "Bachelors", "Subject": "Pharmacology" } },
-
-
 

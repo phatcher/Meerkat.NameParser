@@ -98,15 +98,9 @@ namespace Meerkat.Party.Naming
             }
         }
 
-        protected virtual int LastLetters
-        {
-            get { return FirstLetters == 0 ? -1 : Count - 1; }
-        }
+        protected virtual int LastLetters => FirstLetters == 0 ? -1 : Count - 1;
 
-        protected virtual int LastPrefix
-        {
-            get { return FirstPrefix == 0 ? -1 : FirstSurname - 1; }
-        }
+        protected virtual int LastPrefix => FirstPrefix == 0 ? -1 : FirstSurname - 1;
 
         protected virtual int LastSurname
         {

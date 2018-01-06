@@ -55,6 +55,12 @@ namespace Meerkat.Test.Party.Naming
         }
 
         [Test]
+        public void ForenamePrefixSurname()
+        {
+            ParseName("Mohd Bin Sahid", string.Empty, "Mohd bin Sahid", string.Empty, "Mohd", "bin", "Sahid", string.Empty);
+        }
+
+        [Test]
         public void SurnameForename()
         {
             ParseName("Smith Paul", "STF", "Paul Smith", string.Empty, "Paul", string.Empty, "Smith", string.Empty);
