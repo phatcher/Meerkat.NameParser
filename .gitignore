@@ -9,11 +9,13 @@
 
 
 # Build results
+.vs/
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
 x64/
 build/
+paket-files/
 bld/
 [Bb]in/
 [Oo]bj/
@@ -180,7 +182,7 @@ ClientBin/
 *.pfx
 *.publishsettings
 node_modules/
-tools/
+paket.restore.targets
 .fake/
 
 
