@@ -1,12 +1,14 @@
 /// FAKE Build script
 
 #r "packages/build/FAKE/tools/FakeLib.dll"
+
 open Fake
 open Fake.AssemblyInfoFile
 open Fake.Git
 open Fake.NuGetHelper
 open Fake.RestorePackageHelper
 open Fake.ReleaseNotesHelper
+open Fake.Testing
 
 // Version info
 let projectName = "Meerkat.NameParser"
@@ -22,7 +24,7 @@ let toolsDir = getBuildParamOrDefault "tools" "./tools"
 let nugetDir = "./nuget"
 let solutionFile = "Meerkat.NameParser.sln"
 
-let nunitPath = toolsDir @@ "NUnit-2.6.3/bin"
+let nunitPath = "./packages/build/NUnit.ConsoleRunner/tools/nunit3-console.exe"
 
 // Targets
 Target "Clean" (fun _ ->
@@ -30,7 +32,9 @@ Target "Clean" (fun _ ->
 )
 
 Target "PackageRestore" (fun _ ->
-    RestorePackages()
+    !! solutionFile
+    |> MSBuildRelease buildDir "Restore"
+    |> Log "AppBuild-Output: "
 )
 
 Target "SetVersion" (fun _ ->
@@ -49,12 +53,12 @@ Target "Build" (fun _ ->
 )
 
 Target "Test" (fun _ ->
-    !! (buildDir + "/*.Test.dll")
-    |> NUnit (fun p ->
+    // Exclude the package integrated version as it will find the wrong version in the build directory
+    !! (buildDir + "/Meerkat.NameParser.Test.dll")
+    |> NUnit3 (fun p ->
        {p with
           ToolPath = nunitPath
-          DisableShadowCopy = true
-          OutputFile = buildDir @@ "TestResults.xml"})
+          })
 )
 
 Target "Pack" (fun _ ->

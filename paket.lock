@@ -3,5 +3,6 @@
 GROUP Build
 NUGET
   remote: http://www.nuget.org/api/v2
-    FAKE (4.50)
-    NuGet.CommandLine (3.5)
+    FAKE (5.0.0-beta010)
+    NuGet.CommandLine (4.4.1)
+    NUnit.ConsoleRunner (3.7)
