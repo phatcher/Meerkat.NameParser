@@ -5,7 +5,6 @@ open Fake
 open Fake.AssemblyInfoFile
 open Fake.Git
 open Fake.NuGetHelper
-open Fake.RestorePackageHelper
 open Fake.ReleaseNotesHelper
 open Fake.Testing.NUnit3
 
@@ -20,7 +19,6 @@ let release = LoadReleaseNotes "RELEASE_NOTES.md"
 // Properties
 let buildDir = "./build"
 let toolsDir = getBuildParamOrDefault "tools" "packages/build"
-let nugetDir = "./nuget"
 let solutionFile = "Meerkat.NameParser.sln"
 
 let nunitPath = toolsDir @@ "/NUnit.ConsoleRunner/tools/nunit3-console.exe"
@@ -31,7 +29,9 @@ Target "Clean" (fun _ ->
 )
 
 Target "PackageRestore" (fun _ ->
-    RestorePackages()
+    !! solutionFile
+    |> MSBuildRelease buildDir "Restore"
+    |> Log "AppBuild-Output: "
 )
 
 Target "SetVersion" (fun _ ->
@@ -58,7 +58,7 @@ Target "Test" (fun _ ->
     |> NUnit3 (fun p ->
        {p with
           ToolPath = nunitPath
-          // Odditiy as this creates a build directory in the build directory
+          // Oddity as this creates a build directory in the build directory
           WorkingDir = buildDir
           ShadowCopy = false})
 )

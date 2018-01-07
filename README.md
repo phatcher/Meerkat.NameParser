@@ -1,7 +1,7 @@
 Meerkat Name Parser
 ===================
 
-The [Meerkat.NameParser](https://www.nuget.org/packages/Meerkat.NameParser/) library allows you to parse personal names into their constitutent parts.
+The [Meerkat.NameParser](https://www.nuget.org/packages/Meerkat.NameParser/) library allows you to parse personal names into their constituent parts.
 
 This is most useful when you've been given a list of full names e.g. "Mr Bob Smith BSc" that you then need to store into a domain model and/or use for other purposes such as personalising an email or a website, addressing a letter etc.
 
@@ -15,7 +15,7 @@ You can see the version history [here](RELEASE_NOTES.md).
 ## Build the project
 * Windows: Run *build.cmd*
 
-I have my tools in C:\Tools so I use *build.cmd Default tools=C:\Tools encoding=UTF-8*
+The tooling should be automatically installed by paket/Fake. The default build with compile and test the project, but you can also invoke *build Pack* if you want a local nuget package
 
 ## Library License
 
@@ -49,7 +49,7 @@ The approach is to split the name into tokens and then to identify the various n
 * Bob Smith -> (GF) : Using the heuristic that without any other information the last token is the Family name and others are Given names
 * Bob George Smith -> (GGF) : Same as above
 * Bob Smith-Johnson -> (GF) : The hypen binds to two family name parts together, then the GF heuristic applies
-* Jean-Paul Gautier -> (GF) : First heuristic except the hypen binding working for given names, BTW we ignore whitespace around the hypen so "Jean - Paul Gautier" etc would parse the same way.
+* Jean-Paul Gautier -> (GF) : First heuristic except the hypen binding working for given names, BTW we ignore whitespace around the hyphen so "Jean - Paul Gautier" etc would parse the same way.
 
 When we analyse the input string we create Symbols which implement IToken
 
@@ -102,7 +102,7 @@ Rationale of the additional property bag is to allow other information to stored
 
 This is only limited by what you can infer from the data and what you need for your application, here's some examples from the Letter entries:-
 
-    { "NameType": "Academic", "Value": "BEcon", "Properties":{ "Degree": "Bachelors", "Subject": "Economnics" } },
+    { "NameType": "Academic", "Value": "BEcon", "Properties":{ "Degree": "Bachelors", "Subject": "Economics" } },
     { "NameType": "Academic", "Value": "BEd", "Properties":{ "Degree": "Bachelors", "Subject": "Education" } },
     { "NameType": "Academic", "Value": "BEng", "Properties":{ "Degree": "Bachelors", "Subject": "Engineering" } },
     { "NameType": "Academic", "Value": "BPharm", "Properties":{ "Degree": "Bachelors", "Subject": "Pharmacology" } },

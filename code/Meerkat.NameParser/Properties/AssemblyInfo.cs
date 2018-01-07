@@ -5,6 +5,9 @@
 // associated with an assembly.
 [assembly: AssemblyTitle("Meerkat.NameParser")]
 [assembly: AssemblyDescription("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("Meerkat NameParser")]
+[assembly: AssemblyCopyright("Copyright © Paul Hatcher 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
