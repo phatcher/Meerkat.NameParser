@@ -6,7 +6,7 @@ The [Meerkat.NameParser](https://www.nuget.org/packages/Meerkat.NameParser/) lib
 This is most useful when you've been given a list of full names e.g. "Mr Bob Smith BSc" that you then need to store into a domain model and/or use for other purposes such as personalising an email or a website, addressing a letter etc.
 
 [![NuGet](https://img.shields.io/nuget/v/Meerkat.NameParser.svg)](https://www.nuget.org/packages/Meerkat.NameParser/)
-[![Build status](https://ci.appveyor.com/api/projects/status/7ycnghu7s0umys9e/branch/master?svg=true)](https://ci.appveyor.com/project/PaulHatcher/meerkat-nameparser/branch/master)
+[![Build status](https://ci.appveyor.com/api/projects/status/cwdaxrk6uowv6k9f/branch/master?svg=true)](https://ci.appveyor.com/project/PaulHatcher/meerkat-nameparser/branch/master)
 
 Welcome to contributions from anyone.
 
