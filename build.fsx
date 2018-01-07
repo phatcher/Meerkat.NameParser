@@ -7,6 +7,7 @@ open Fake.Git
 open Fake.NuGetHelper
 open Fake.RestorePackageHelper
 open Fake.ReleaseNotesHelper
+open Fake.Testing.NUnit3
 
 // Version info
 let projectName = "Meerkat.NameParser"
@@ -18,11 +19,11 @@ let release = LoadReleaseNotes "RELEASE_NOTES.md"
 
 // Properties
 let buildDir = "./build"
-let toolsDir = getBuildParamOrDefault "tools" "./tools"
+let toolsDir = getBuildParamOrDefault "tools" "packages/build"
 let nugetDir = "./nuget"
 let solutionFile = "Meerkat.NameParser.sln"
 
-let nunitPath = toolsDir @@ "NUnit-2.6.3/bin"
+let nunitPath = toolsDir @@ "/NUnit.ConsoleRunner/tools/nunit3-console.exe"
 
 // Targets
 Target "Clean" (fun _ ->
@@ -34,7 +35,11 @@ Target "PackageRestore" (fun _ ->
 )
 
 Target "SetVersion" (fun _ ->
-    let commitHash = Information.getCurrentHash()
+    let commitHash = 
+        try 
+            Information.getCurrentHash()
+        with
+            | ex -> printfn "Exception! (%s)" (ex.Message); ""
     let infoVersion = String.concat " " [release.AssemblyVersion; commitHash]
     CreateCSharpAssemblyInfo "./code/SolutionInfo.cs"
         [Attribute.Version release.AssemblyVersion
@@ -50,11 +55,12 @@ Target "Build" (fun _ ->
 
 Target "Test" (fun _ ->
     !! (buildDir + "/*.Test.dll")
-    |> NUnit (fun p ->
+    |> NUnit3 (fun p ->
        {p with
           ToolPath = nunitPath
-          DisableShadowCopy = true
-          OutputFile = buildDir @@ "TestResults.xml"})
+          // Odditiy as this creates a build directory in the build directory
+          WorkingDir = buildDir
+          ShadowCopy = false})
 )
 
 Target "Pack" (fun _ ->

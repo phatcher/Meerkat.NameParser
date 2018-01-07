@@ -15,7 +15,6 @@
 [Rr]elease/
 x64/
 build/
-paket-files/
 bld/
 [Bb]in/
 [Oo]bj/
@@ -146,8 +145,12 @@ publish/
 *.[Pp]ublish.xml
 *.azurePubxml
 
-# Paket
-.paket/paket.exec
+# Build tools/artifacts
+.fake/
+.paket/paket.exe
+paket.restore.targets
+packages/
+paket-files/
 
 # NuGet Packages Directory
 ## TODO: If you have NuGet Package Restore enabled, uncomment the next line
@@ -182,8 +185,6 @@ ClientBin/
 *.pfx
 *.publishsettings
 node_modules/
-paket.restore.targets
-.fake/
 
 
 # RIA/Silverlight projects
@@ -229,7 +230,3 @@ Desktop.ini
 
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
-/code/Meerkat.Caching/App_Packages/
-/packages/build
-/.paket/paket.exe
-/code/Meerkat.NameParser/packages

@@ -4,4 +4,5 @@ group Build
 	source http://nuget.org/api/v2
 	
     nuget FAKE
-    nuget Nuget.CommandLine	
+    nuget Nuget.CommandLine
+    nuget NUnit.ConsoleRunner
