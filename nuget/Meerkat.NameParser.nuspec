@@ -3,15 +3,9 @@
     <metadata>
         <id>Meerkat.NameParser</id>
         <title>Meerkat NameParser</title>
-        <description>Parses personal names into their constituent parts</description>
         <version>1.0.0</version>
-        <licenseUrl>http://opensource.org/licenses/mit-license.php</licenseUrl>
-        <copyright>Copyright © 2017 Paul Hatcher</copyright>
         <owners>Paul Hatcher</owners>
-        <authors>Paul Hatcher</authors>
-        <projectUrl>https://github.com/phatcher/Meerkat.NameParser</projectUrl>
         <releaseNotes>@releaseNotes@</releaseNotes>
-        <tags>human name parser person</tags>
         <dependencies>
             <dependency id="Meerkat.Logging" version="1.0.2" />
             <dependency id="Newtonsoft.Json" version="10.0.2" />

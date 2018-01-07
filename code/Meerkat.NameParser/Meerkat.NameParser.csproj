@@ -4,13 +4,19 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Meerkat.Logging" Version="1.0.2" />
-    <PackageReference Include="Microsoft.Net.Http" Version="2.2.29" />
-    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.3" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
   </ItemGroup>
   <PropertyGroup>
      <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
      <RootNamespace>Meerkat</RootNamespace>
+	 <Description>Parses personal names into their constituent parts</Description>
+     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+     <PackageLicenseUrl>http://opensource.org/licenses/mit-license.php</PackageLicenseUrl>
+     <PackageProjectUrl>https://github.com/phatcher/Meerkat.NameParser</PackageProjectUrl>
+     <PackageTags>human name parser person</PackageTags>
+     <RepositoryUrl>https://github.com/phatcher/Meerkat.NameParser</RepositoryUrl>
+     <RepositoryType>git</RepositoryType>
+     <Authors>Paul Hatcher</Authors>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DocumentationFile>bin\Release\net45\Meerkat.NameParser.xml</DocumentationFile>

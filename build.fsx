@@ -49,7 +49,14 @@ Target "SetVersion" (fun _ ->
 
 Target "Build" (fun _ ->
     !! solutionFile
-    |> MSBuildRelease buildDir "Build"
+    |> MSBuild buildDir "Build" 
+        [
+            "Configuration", "Release"
+            "Platform", "Any CPU"
+            "PackageVersion", release.AssemblyVersion
+            "PackageReleaseNotes", release.Notes |> toLines
+            "IncludeSymbols", "true"
+        ]
     |> Log "AppBuild-Output: "
 )
 
