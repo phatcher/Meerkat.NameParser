@@ -4,15 +4,13 @@
 open Fake
 open Fake.AssemblyInfoFile
 open Fake.Git
-open Fake.NuGetHelper
 open Fake.ReleaseNotesHelper
 open Fake.Testing.NUnit3
 
 // Version info
-let projectName = "Meerkat.NameParser"
-let projectSummary = ""
-let projectDescription = "Parses personal names into their constituent parts"
+let projectName = "Meerkat NameParser"
 let authors = ["Paul Hatcher"]
+let copyright = "Copyright © 2017 Paul Hatcher"
 
 let release = LoadReleaseNotes "RELEASE_NOTES.md"
 
@@ -42,7 +40,9 @@ Target "SetVersion" (fun _ ->
             | ex -> printfn "Exception! (%s)" (ex.Message); ""
     let infoVersion = String.concat " " [release.AssemblyVersion; commitHash]
     CreateCSharpAssemblyInfo "./code/SolutionInfo.cs"
-        [Attribute.Version release.AssemblyVersion
+        [Attribute.Product projectName
+         Attribute.Copyright copyright
+         Attribute.Version release.AssemblyVersion
          Attribute.FileVersion release.AssemblyVersion
          Attribute.InformationalVersion infoVersion]
 )
@@ -53,6 +53,7 @@ Target "Build" (fun _ ->
         [
             "Configuration", "Release"
             "Platform", "Any CPU"
+            "Authors", authors |> String.concat ", "
             "PackageVersion", release.AssemblyVersion
             "PackageReleaseNotes", release.Notes |> toLines
             "IncludeSymbols", "true"
@@ -70,19 +71,6 @@ Target "Test" (fun _ ->
           ShadowCopy = false})
 )
 
-Target "Pack" (fun _ ->
-    let nugetParams p = 
-      { p with 
-          Authors = authors
-          Version = release.AssemblyVersion
-          ReleaseNotes = release.Notes |> toLines
-          OutputPath = buildDir 
-          AccessKey = getBuildParamOrDefault "nugetkey" ""
-          Publish = hasBuildParam "nugetkey" }
-
-    NuGet nugetParams "nuget/Meerkat.NameParser.nuspec"
-)
-
 Target "Release" (fun _ ->
     let tag = String.concat "" ["v"; release.AssemblyVersion] 
     Branches.tag "" tag
@@ -98,7 +86,6 @@ Target "Default" DoNothing
     ==> "Build"
     ==> "Test"
     ==> "Default"
-    ==> "Pack"
     ==> "Release"
 
 RunTargetOrDefault "Default"

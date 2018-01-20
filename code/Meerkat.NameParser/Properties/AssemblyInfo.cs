@@ -4,10 +4,7 @@
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Meerkat.NameParser")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Meerkat NameParser")]
-[assembly: AssemblyCopyright("Copyright © Paul Hatcher 2017")]
+[assembly: AssemblyDescription("Parses personal names into their constituent parts")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

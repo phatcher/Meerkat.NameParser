@@ -1,14 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+VisualStudioVersion = 15.0.27130.2020
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meerkat.NameParser", "code\Meerkat.NameParser\Meerkat.NameParser.csproj", "{C38F19EE-FD6A-4731-91C3-66FE02164D35}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Meerkat.NameParser", "code\Meerkat.NameParser\Meerkat.NameParser.csproj", "{C38F19EE-FD6A-4731-91C3-66FE02164D35}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meerkat.NameParser.Test", "code\Meerkat.NameParser.Test\Meerkat.NameParser.Test.csproj", "{BEB5F547-73C0-417D-BEC5-60CC6EA36927}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Meerkat.NameParser.Test", "code\Meerkat.NameParser.Test\Meerkat.NameParser.Test.csproj", "{BEB5F547-73C0-417D-BEC5-60CC6EA36927}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BB07AF7B-03EE-4DD6-AC21-4BEEA900BF24}"
 	ProjectSection(SolutionItems) = preProject
+		build.fsx = build.fsx
 		nuget\Meerkat.NameParser.nuspec = nuget\Meerkat.NameParser.nuspec
 		data\PersonNames.json = data\PersonNames.json
 		README.md = README.md
@@ -32,5 +33,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {30C3F297-5F91-42CF-82E2-1D4DB3FC8111}
 	EndGlobalSection
 EndGlobal

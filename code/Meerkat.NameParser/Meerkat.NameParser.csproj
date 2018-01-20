@@ -7,16 +7,19 @@
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
   </ItemGroup>
   <PropertyGroup>
-     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-     <RootNamespace>Meerkat</RootNamespace>
-	 <Description>Parses personal names into their constituent parts</Description>
-     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-     <PackageLicenseUrl>http://opensource.org/licenses/mit-license.php</PackageLicenseUrl>
-     <PackageProjectUrl>https://github.com/phatcher/Meerkat.NameParser</PackageProjectUrl>
-     <PackageTags>human name parser person</PackageTags>
-     <RepositoryUrl>https://github.com/phatcher/Meerkat.NameParser</RepositoryUrl>
-     <RepositoryType>git</RepositoryType>
-     <Authors>Paul Hatcher</Authors>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <RootNamespace>Meerkat</RootNamespace>
+    <Description>Parses personal names into their constituent parts</Description>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>Meerkat.NameParser</PackageId>
+    <Title>Meerkat NameParser</Title>
+    <Copyright>Copyright © 2017 Paul Hatcher</Copyright>
+    <PackageLicenseUrl>http://opensource.org/licenses/mit-license.php</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/phatcher/Meerkat.NameParser</PackageProjectUrl>
+    <PackageRequireLicenceAcceptance>False</PackageRequireLicenceAcceptance>
+    <PackageTags>human name parser person</PackageTags>
+    <RepositoryUrl>https://github.com/phatcher/Meerkat.NameParser</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DocumentationFile>bin\Release\net45\Meerkat.NameParser.xml</DocumentationFile>
