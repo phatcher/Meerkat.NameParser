@@ -15,7 +15,7 @@ You can see the version history [here](RELEASE_NOTES.md).
 ## Build the project
 * Windows: Run *build.cmd*
 
-The tooling should be automatically installed by paket/Fake. The default build with compile and test the project, but you can also invoke *build Pack* if you want a local nuget package
+The tooling should be automatically installed by paket/Fake. The default build will compile and test the project, and also produce a nuget package
 
 ## Library License
 
