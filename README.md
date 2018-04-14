@@ -35,10 +35,10 @@ The library is flexible and defines an interface which exposes standardized part
 * S)uffix - Part of the family name typically generational e.g. "Jnr", "II", "III", against might not be needed for collate/search
 * L)etters - Can be civil awards e.g. "OBE", "CBE", military awards e.g. "VC", "GC", "DSM", "DSO", degrees e.g. "BSc", "PhD", professional awards e.g. "CEng" or membership of professional societies e.g. "FRCS", "FBCS", "MACM" etc
 
-We use given and family name in the library rather than forename/surname to avoid confusion with non-Western names where the display order is "Family Given" rather than "Given Family"
+We use **given** and **family** name in the library rather than forename/surname to avoid confusion with non-Western names where the display order is "Family Given" rather than "Given Family"
 
 We also have two other properties
-* Salutation - For the most part this is simple e.g. "Dear {Given}" or "Dear {Title} {Prefix} {Family} {Suffix}" depending on how formal you want to be, however in British English you have anomalies such as "Sir George Bingham" is "Dear Sir George" and the "Bishop Of Cantebury" is "My Lord Bishop"
+* Salutation - For the most part this is simple e.g. "Dear {Given}" or "Dear {Title} {Prefix} {Family} {Suffix}" depending on how formal you want to be, however in British English you have anomalies such as "Sir George Bingham" is "Dear Sir George" and the "Bishop Of Canterbury" is "My Lord Bishop"
 * Envelope - The name you would put on the envelope e.g. "Mr Bob Smith"
 
 These are controlled by SalutationFormat and EnvelopeFormat so that they may be generated from the name parts or set explicitly.
@@ -48,8 +48,8 @@ The approach is to split the name into tokens and then to identify the various n
 
 * Bob Smith -> (GF) : Using the heuristic that without any other information the last token is the Family name and others are Given names
 * Bob George Smith -> (GGF) : Same as above
-* Bob Smith-Johnson -> (GF) : The hypen binds to two family name parts together, then the GF heuristic applies
-* Jean-Paul Gautier -> (GF) : First heuristic except the hypen binding working for given names, BTW we ignore whitespace around the hyphen so "Jean - Paul Gautier" etc would parse the same way.
+* Bob Smith-Johnson -> (GF) : The hyphen binds to two family name parts together, then the GF heuristic applies
+* Jean-Paul Gautier -> (GF) : First heuristic except the hyphen binding working for given names, BTW we ignore whitespace around the hyphen so "Jean - Paul Gautier" etc would parse the same way.
 
 When we analyse the input string we create Symbols which implement IToken
 
@@ -66,7 +66,7 @@ When we analyse the input string we create Symbols which implement IToken
         object Value { get; set; }
     }
 
-For titles, suffixes and letters we have explcit keyword lists that can be expanded upon if your data set has values not already handled. These are all stored as NameSymbol entities
+For titles, suffixes and letters we have explicit keyword lists that can be expanded upon if your data set has values not already handled. These are all stored as NameSymbol entities
 
     public class NameSymbol : Symbol
     {

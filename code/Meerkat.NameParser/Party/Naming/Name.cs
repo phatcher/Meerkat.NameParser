@@ -38,44 +38,61 @@ namespace Meerkat.Party.Naming
             }
         }
 
+        /// <summary>
+        /// Get or set the name parser.
+        /// </summary>
         public virtual INameParser Parser
         {
-            get { return parser ?? (parser = new SimpleParser()); }
-            set { parser = value; }
+            get => parser ?? (parser = new SimpleParser());
+            set => parser = value;
         }
 
-        public string Prefix {
-            get { return prefix ?? (prefix = string.Empty); }
-            set { prefix = value; }
+        /// <copydoc cref="IName.Prefix" />
+
+        public string Prefix
+        {
+            get => prefix ?? (prefix = string.Empty);
+            set => prefix = value;
         }
+
+        /// <copydoc cref="IName.Core" />
 
         public string Core
         {
-            get { return core ?? (core = string.Empty); }
-            set { core = value; }
+            get => core ?? (core = string.Empty);
+            set => core = value;
         }
+
+        /// <copydoc cref="IName.Suffix" />
 
         public string Suffix
         {
-            get { return suffix ?? (suffix = string.Empty); }
-            set { suffix = value; }
+            get => suffix ?? (suffix = string.Empty);
+            set => suffix = value;
         }
+
+        /// <copydoc cref="IName.Value" />
 
         public string Value
         {
-            get { return DisplayValue(); }
-            set { Parse(value); }
+            get => DisplayValue();
+            set => Parse(value);
         }
+
+        /// <copydoc cref="IName.DisplayValue" />
 
         public string DisplayValue(string format = null)
         { 
             //TODO: Handle formats
             var fred = (Prefix.Trim() + " " + Core.Trim() + " " + Suffix.Trim()).Trim();
-            while (fred.IndexOf("  ") > -1) {
+            while (fred.IndexOf("  ") > -1)
+            {
                 Core = fred.Replace("  ", " ");
             }
             return fred;
         }
+
+        /// <copydoc cref="IName.Parse" />
 
         public void Parse(string value, string format = null)
         {
