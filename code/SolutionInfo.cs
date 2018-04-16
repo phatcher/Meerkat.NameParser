@@ -3,15 +3,15 @@ using System.Reflection;
 
 [assembly: AssemblyProductAttribute("Meerkat NameParser")]
 [assembly: AssemblyCopyrightAttribute("Copyright © 2017 Paul Hatcher")]
-[assembly: AssemblyVersionAttribute("1.0.1")]
-[assembly: AssemblyFileVersionAttribute("1.0.1")]
-[assembly: AssemblyInformationalVersionAttribute("1.0.1 c4d61c")]
+[assembly: AssemblyVersionAttribute("1.0.2")]
+[assembly: AssemblyFileVersionAttribute("1.0.2")]
+[assembly: AssemblyInformationalVersionAttribute("1.0.2 3b3e2e")]
 namespace System {
     internal static class AssemblyVersionInformation {
         internal const System.String AssemblyProduct = "Meerkat NameParser";
         internal const System.String AssemblyCopyright = "Copyright © 2017 Paul Hatcher";
-        internal const System.String AssemblyVersion = "1.0.1";
-        internal const System.String AssemblyFileVersion = "1.0.1";
-        internal const System.String AssemblyInformationalVersion = "1.0.1 c4d61c";
+        internal const System.String AssemblyVersion = "1.0.2";
+        internal const System.String AssemblyFileVersion = "1.0.2";
+        internal const System.String AssemblyInformationalVersion = "1.0.2 3b3e2e";
     }
 }

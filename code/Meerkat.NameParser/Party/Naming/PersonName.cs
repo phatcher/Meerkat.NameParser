@@ -42,81 +42,110 @@ namespace Meerkat.Party.Naming
             }
         }
 
+        /// <summary>
+        /// Creates a new instance of the <see cref="PersonName"/> class.
+        /// </summary>
         public PersonName()
         {
             familyName = new Name();
         }
 
+        /// <summary>
+        /// Get or set the name parser
+        /// </summary>
         public INameParser Parser
         {
-            get { return parser ?? (parser = new SimpleParser()); }
-            set { parser = value; }
+            get => parser ?? (parser = new SimpleParser());
+            set => parser = value;
         }
 
+        /// <copydoc cref="IPersonName.Title" />
         public string Title
         {
-            get { return title ?? (title = string.Empty); }
-            set { title = value; }
+            get => title ?? (title = string.Empty);
+            set => title = value;
         }
 
         string IName.Prefix
         {
-            get { return Title; }
-            set { Title = value; }
+            get => Title;
+            set => Title = value;
         }
 
+        /// <copydoc cref="IPersonName.Given" />
         public string Given
         {
-            get { return forename ?? (forename = string.Empty); }
-            set { forename = value; }
+            get => forename ?? (forename = string.Empty);
+            set => forename = value;
         }
 
-        string IName.Core {
-            get { return Given; }
-            set { Given = value; }
-        }
-
-        public IName Family
+        string IName.Core
         {
-            get { return familyName; }
+            get => Given;
+            set => Given = value;
         }
 
-        public string Letters
+        /// <copydoc cref="IPersonName.Family" />
+
+        public IName Family => familyName;
+
+        string IPersonName.Letters
         {
-            get { return letters ?? (letters = string.Empty); }
-            set { letters = value; }
+            get => letters ?? (letters = string.Empty);
+            set => letters = value;
         }
 
-        public string Suffix {
-            get { return Family.Value; }
-            set { throw new ArgumentException("Cannot directly assign Suffix for a PersonName"); }
+        /// <copydoc cref="IName.Suffix" />
+
+        public string Suffix
+        {
+            get => Family.Value;
+            set => throw new ArgumentException("Cannot directly assign Suffix for a PersonName");
         }
+
+        /// <copydoc cref="IPersonName.ReverseOrder" />
 
         public bool ReverseOrder { get; set; }
 
+        /// <copydoc cref="IPersonName.Envelope" />
+
         public string Envelope
         {
-            get { return envelope ?? (envelope = string.Empty); }
-            set { envelope = value; }
+            get => envelope ?? (envelope = string.Empty);
+            set => envelope = value;
         }
+
+        /// <copydoc cref="IPersonName.Salutation" />
 
         public string Salutation
         {
-            get { return salutation ?? (salutation = string.Empty); }
-            set { salutation = value; }
+            get => salutation ?? (salutation = string.Empty);
+            set => salutation = value;
         }
+
+        /// <copydoc cref="IPersonName.Value" />
 
         public string Value
         {
-            get { return DisplayValue(string.Empty); }
-            set { Parse(value); }
+            get => DisplayValue(string.Empty);
+            set => Parse(value);
         }
 
+        /// <summary>
+        /// Display name according to the format.
+        /// </summary>
+        /// <param name="format"></param>
+        /// <returns></returns>
         public string DisplayValue(string format = null)
         {
             return Parser.Assemble(this, format);
         }
 
+        /// <summary>
+        /// Parse the raw name according to the specified format
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="format"></param>
         public void Parse(string value, string format = null)
         {
             Parser.Parse(value, this, format);

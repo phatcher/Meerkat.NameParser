@@ -18,9 +18,10 @@ namespace Meerkat.Party.Naming
             Lex = new NameLexer();
         }
 
-        private IName Company {
-            get { return company; }
-            set { company = value; }
+        private IName Company
+        {
+            get => company;
+            set => company = value;
         }
 
         private void Initialise()

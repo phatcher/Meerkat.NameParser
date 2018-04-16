@@ -1,12 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net45</TargetFramework>
-  </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="Meerkat.Logging" Version="1.0.2" />
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
-  </ItemGroup>
-  <PropertyGroup>
+    <TargetFrameworks>net45;netstandard20</TargetFrameworks>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <RootNamespace>Meerkat</RootNamespace>
     <Description>Parses personal names into their constituent parts</Description>
@@ -20,9 +14,20 @@
     <PackageTags>human name parser person</PackageTags>
     <RepositoryUrl>https://github.com/phatcher/Meerkat.NameParser</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
+    <Authors>Paul Hatcher</Authors>
+	<OutputPath>$(SolutionDir)/build/$(Configuration)/$(AssemblyName)/$(TargetFramework)/</OutputPath>
+	<OutDir>$(OutputPath)</OutDir>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Meerkat.Logging" Version="2.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+  </ItemGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\net45\Meerkat.NameParser.xml</DocumentationFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>$(SolutionDir)/build/$(Configuration)/$(AssemblyName)/$(TargetFramework)/Meerkat.Security.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="..\SolutionInfo.cs" Link="Properties\SolutionInfo.cs" />
@@ -31,16 +36,8 @@
     <EmbeddedResource Include="..\..\data\PersonNames.json">
       <Link>Party\Naming\PersonNames.json</Link>
     </EmbeddedResource>
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.IdentityModel" />
-    <Reference Include="System.IO.Compression" />
-    <Reference Include="System.Web" />
   </ItemGroup>
 </Project>
