@@ -9,17 +9,18 @@
     <Title>Meerkat NameParser</Title>
     <Copyright>Copyright © 2017 Paul Hatcher</Copyright>
     <PackageLicenseUrl>http://opensource.org/licenses/mit-license.php</PackageLicenseUrl>
+    <PackageLicenceType>MIT</PackageLicenceType>
     <PackageProjectUrl>https://github.com/phatcher/Meerkat.NameParser</PackageProjectUrl>
     <PackageRequireLicenceAcceptance>False</PackageRequireLicenceAcceptance>
     <PackageTags>human name parser person</PackageTags>
     <RepositoryUrl>https://github.com/phatcher/Meerkat.NameParser</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
-    <Authors>Paul Hatcher</Authors>
-	<OutputPath>$(SolutionDir)/build/$(Configuration)/$(AssemblyName)/$(TargetFramework)/</OutputPath>
-	<OutDir>$(OutputPath)</OutDir>
+    <RepositoryType>git</RepositoryType>    <Authors>Paul Hatcher</Authors>
+    <OutputPath>$(SolutionDir)/build/$(Configuration)/$(AssemblyName)/$(TargetFramework)/</OutputPath>
+    <OutDir>$(OutputPath)</OutDir>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Meerkat.Logging" Version="2.2.0" />
+    <PackageReference Include="Meerkat.Logging" Version="2.2.1" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta2-18618-05" PrivateAssets="All"/>
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
   </ItemGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
