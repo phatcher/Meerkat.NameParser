@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Globalization;
+using System.Linq;
 
 namespace Meerkat.Tools
 {
@@ -31,7 +32,8 @@ namespace Meerkat.Tools
 
         public static bool IsAlpha(this int value)
         {
-            return value.InLexCharRange(LexChar.A, LexChar.Z) || value.InLexCharRange(LexChar.Alower, LexChar.Zlower);
+            var category = CharUnicodeInfo.GetUnicodeCategory((char)value);
+            return category == UnicodeCategory.LowercaseLetter || category == UnicodeCategory.UppercaseLetter;
         }
 
         public static bool IsAlphaNumeric(this int value)

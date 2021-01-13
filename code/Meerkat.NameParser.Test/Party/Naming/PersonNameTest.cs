@@ -283,6 +283,12 @@ namespace Meerkat.Test.Party.Naming
             ParseName("Richard The Lionheart", envelope: "Richard The Lionheart", title: "The Lionheart", forename: "Richard");
         }
 
+        [Test]
+        public void NonAsciiCharacters()
+        {
+            ParseName("Øivænd Håøy", envelope: "Øivænd Håøy", forename: "Øivænd", surname: "Håøy");
+        }
+
         private void ParseName(string value, string format = "", string envelope = "", string title = "", string forename = "", string prefix = "", string surname = "", string suffix = "")
         {
             var parser = format == "STF" ? ParserFactory.StandardPersonParser(true) : ParserFactory.StandardPersonParser();
